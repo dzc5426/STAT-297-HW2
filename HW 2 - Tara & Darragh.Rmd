@@ -1,6 +1,6 @@
 ---
 title: "HW 2- Tara & Darragh"
-author: "Darrag
+author: "Darragh"
 date: "10/11/2017"
 output: html_document
 ---
