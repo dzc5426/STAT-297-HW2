@@ -1,0 +1,8 @@
+---
+title: "HW 2- Tara & Darragh"
+author: "Darrag
+date: "10/11/2017"
+output: html_document
+---
+
+Hi 
