@@ -91,7 +91,18 @@ today <- Sys.Date()
 three_year_ago <- seq(today, length = 2, by = "-3 year")[2]
 getSymbols(SP500_symbol, from = three_year_ago, to = today)
 
+stocks_tickers <- c("AAPL", "MSFT")
+getSymbols(stocks_tickers, from = three_year_ago, to = today)
 
+nb_ticker <- length(stocks_tickers)
+var_stocks <- rep(NA, nb_ticker)
+names(var_stocks) <- stocks_tickers
+
+for (i in 1:nb_ticker){
+Xt = na.omit(ClCl(get(stocks_tickers[i])))
+stocks_tickers[i] = var(Xt)
+}
+stocks_tickers
 
 ```{r}
 B <- 10^4
