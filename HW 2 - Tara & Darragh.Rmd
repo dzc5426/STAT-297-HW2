@@ -1,9 +1,88 @@
 ---
+title: "HW 2"
+author: "Darragh, Tara"
 date: "10/11/2017"
 output: html_document
 ---
 
-Hi SP500_symbol <- ticker_sp500[(1:499)*2+1]
+# Fizz Buzz
+
+```{r eval=FALSE, cache=TRUE}
+x = 1
+while (x <= 1000){
+  if(x %% 3 == 0 && x %% 5 != 0){
+    print("Fizz")
+  }else if(x %% 3 != 0 && x %% 5 == 0){
+    print("Buzz")
+  }else if(x %% 3 == 0 && x %% 5 == 0){
+    print(paste("Fizz","Buzz"))
+  }else{
+    print(x)
+  }
+  x = x+1
+}
+
+```
+
+
+# Map
+
+```{r echo = FALSE, cache=TRUE}
+library(maps)
+library(ggmap)
+library(rvest)
+
+# Define webpage
+big10 = read_html("http://www.bigten.org/library/stats/fb-confsked.html#standings")
+
+# Get uni names
+big10 %>% 
+  html_nodes(".b1gfbstats:nth-child(9) td:nth-child(1) , .b1gfbstats:nth-child(6) td:nth-child(1)") %>% 
+  html_text() -> uni_name
+uni_name = paste(uni_name,"University")
+
+# Find uni locations
+uni_coord = data.frame(geocode(uni_name))
+
+# Get win rate vector
+big10 %>% 
+  html_nodes("td:nth-child(7)") %>%
+  html_text() -> uni_wp
+
+uni_coord$wp = 100*as.numeric(uni_wp[1:length(uni_name)])
+
+# Get division vector
+uni_coord$Division = rep(c("East Division","West Division"), each = length(uni_name)/2)
+
+library(mapproj)
+
+# Create vector of states that make up the big10 region
+all_state = map_data("state")
+select_states = subset(all_state, region %in% c("illinois", "wisconsin",
+                                                "michigan", "maryland", "new jersey",
+                                                "indiana", "ohio",
+                                                "pennsylvania", "west virginia",
+                                                "kentucky", "virginia", "south dakota", "kansas", 
+                                                "minnesota", "nebraska", "iowa", "missouri"))
+ggplot(lengend = FALSE) + geom_polygon(data = select_states,
+                                       aes(x = long, y = lat, group = group),
+                                       colour = "grey95",
+                                       fill = "grey85") + theme_bw()+ geom_point(data = uni_coord, 
+                                                                                  aes(lon, lat, col = Division, size = wp)) + 
+  scale_size(name="Win rate [%]") + 
+  xlab("Longitude") + ylab("Latitude")
+```
+  
+# Portfolio Data
+library(quantmod)
+library(rvest)
+sp500 <- read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
+
+sp500 %>% 
+html_nodes(".text") %>% 
+html_text() -> ticker_sp500
+
+SP500_symbol <- ticker_sp500[(1:499)*2+1]
 SP500_symbol[SP500_symbol == "BRK.B"] <- "BRK-B"
 SP500_symbol[SP500_symbol == "BF.B"] <- "BF-B"
 
