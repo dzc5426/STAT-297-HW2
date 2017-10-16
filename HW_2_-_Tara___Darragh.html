@@ -124,37 +124,6 @@ $(document).ready(function () {
 </div>
 
 
-<<<<<<< HEAD
-<p>Hi</p>
-<p>x = 1 while (x &lt;= 1000){ if(x %% 3 == 0 &amp;&amp; x %% 5 != 0){ print(“Fizz”) }else if(x %% 3 != 0 &amp;&amp; x %% 5 == 0){ print(“Buzz”) }else if(x %% 3 == 0 &amp;&amp; x %% 5 == 0){ print(paste(“Fizz”,“Buzz”)) }else{ print(x) } x = x+1 }</p>
-=======
-<p>x &lt;- if(x %% 3 ==0){print(paste(x, “is FIZZ”))} if(x %% 5 ==0){print(paste(x, “is BUZZ”))} }else{ print(paste(x))</p>
-<p>x &lt;- 1</p>
-<p>if (x %% 3 == 0){ print(paste(x, “is FIZZ”))} if (x %% 5 == 0){ print(paste(x, “is BUZZ”))} else{ print(paste(x,))}</p>
-<div id="map-data" class="section level1">
-<h1>MAP DATA</h1>
-<p>library(maps) library(ggmap) library(rvest)</p>
-</div>
-<div id="define-webpage" class="section level1">
-<h1>Define webpage</h1>
-<p>big10 = read_html(“<a href="http://www.bigten.org/library/stats/fb-confsked.html#standings" class="uri">http://www.bigten.org/library/stats/fb-confsked.html#standings</a>”)</p>
-</div>
-<div id="get-uni-names" class="section level1">
-<h1>Get uni names</h1>
-<p>big10 %&gt;% html_nodes(“.b1gfbstats:nth-child(9) td:nth-child(1) , .b1gfbstats:nth-child(6) td:nth-child(1)”) %&gt;% html_text() -&gt; uni_name uni_name = paste(uni_name,“University”)</p>
-</div>
-<div id="find-uni-locations" class="section level1">
-<h1>Find uni locations</h1>
-<p>uni_coord = data.frame(geocode(uni_name))</p>
-</div>
-<div id="get-win-rate" class="section level1">
-<h1>Get win rate</h1>
-<p>big10 %&gt;% html_nodes(“td:nth-child(7)”) %&gt;% html_text() -&gt; uni_wp uni_coord$wp = 100*as.numeric(uni_wp[1:length(uni_name)])</p>
-</div>
-<div id="get-division" class="section level1">
-<h1>Get division</h1>
-<p>uni_coord$conf = rep(c(“East Division”,“West Division”), each = length(uni_name)/2)</p>
-</div>
 <div id="portfolio-data" class="section level1">
 <h1>Portfolio Data</h1>
 <p>library(quantmod) library(rvest) sp500 &lt;- read_html(“<a href="https://en.wikipedia.org/wiki/List_of_S%26P_500_companies">https://en.wikipedia.org/wiki/List_of_S%26P_500_companies</a>”)</p>
@@ -2994,7 +2963,6 @@ head(Ut)</code></pre>
 <p>segments3D (x0, y0, z0, x1 = x0, y1 = y0, z1 = z0, …, colvar = NULL, phi = 40, theta = 40, col = NULL, NAcol = “white”, breaks = NULL, colkey = NULL, panel.first = NULL, clim = NULL, clab = NULL, bty = “b”, add = FALSE, plot = TRUE)</p>
 </div>
 </div>
->>>>>>> b90de137b823540e0396658a9fa4aad72925ffca
 
 
 
