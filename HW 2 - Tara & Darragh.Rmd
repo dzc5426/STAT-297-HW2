@@ -1,8 +1,81 @@
 ---
-title: "HW 2- Tara & Darragh"
-author: "Darragh"
 date: "10/11/2017"
 output: html_document
 ---
 
-Hi 
+Hi SP500_symbol <- ticker_sp500[(1:499)*2+1]
+SP500_symbol[SP500_symbol == "BRK.B"] <- "BRK-B"
+SP500_symbol[SP500_symbol == "BF.B"] <- "BF-B"
+
+
+today <- Sys.Date()
+three_year_ago <- seq(today, length = 2, by = "-3 year")[2]
+getSymbols(SP500_symbol, from = three_year_ago, to = today)
+
+
+
+```{r}
+B <- 10^4
+set.seed(1982)
+Ut = runif(B)
+head(Ut)
+```
+
+```{r}
+walk=matrix(rep(NA), nrow = 3, ncol = B)
+rownames(walk) = c("x", "y", "z")
+x=seq(from = 1, to = B)
+colnames(walk) =x
+```
+
+```{r}
+Xt=c(0, 0 ,0)
+for (t in 1:B) {
+  if (Ut[t] <= 1/6){
+    Xt=Xt+c(1, 0, 0)
+    walk[,t]=Xt
+  }else if ((Ut[t]>1/6) & (Ut[t] <= 2/6)) {
+    Xt=Xt+c(-1, 0, 0)
+    walk[,t]=Xt
+  }else if ((Ut[t]>2/6) & (Ut[t] <= 3/6)) {
+    Xt=Xt+c(0, 1, 0)
+    walk[,t]=Xt
+  }else if ((Ut[t]>3/6) & (Ut[t] <= 4/6)) {
+    Xt=Xt+c(0, -1, 0)
+    walk[,t]=Xt
+  }else if ((Ut[t]>4/6) & (Ut[t] <= 5/6)) {
+    Xt=Xt+c(0, 0, 1)
+    walk[,t]=Xt
+  }else if (Ut[t]>5/6) {
+    Xt=Xt+c(0, 0, -1)
+    walk[,t]=Xt
+    }
+  }
+```
+
+
+```{r}
+walk[,B]
+```
+
+
+```{r}
+B <- 10^5
+set.seed(2000)
+Ut = runif(B)
+head(Ut)
+```
+
+```{r}
+walk[,]
+```
+
+##segments3D
+segments3D (x0, y0, z0, x1 = x0, y1 = y0, z1 = z0, ..., 
+         colvar = NULL, phi = 40, theta = 40,
+         col = NULL, NAcol = "white", breaks = NULL,
+         colkey = NULL, panel.first = NULL,
+         clim = NULL, clab = NULL, bty = "b", 
+         add = FALSE, plot = TRUE)
+
+
