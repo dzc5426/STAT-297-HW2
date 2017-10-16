@@ -76,6 +76,9 @@ library("plot3D")
 segments3D(x0, y0, z0, x1, y1, z1 = z0)
 
                      add = TRUE, col = "black", lwd = 2)
-
-
+library(animation)
+ani.options(interval=.05)
+```{r}
+saveHTML(}, htmlfile = "RW3D.html"))
+```
 
