@@ -67,15 +67,15 @@ head(Ut)
 ```
 
 ```{r}
-walk[,]
+walk[]
 ```
 
 ##segments3D
-segments3D (x0, y0, z0, x1 = x0, y1 = y0, z1 = z0, ..., 
-         colvar = NULL, phi = 40, theta = 40,
-         col = NULL, NAcol = "white", breaks = NULL,
-         colkey = NULL, panel.first = NULL,
-         clim = NULL, clab = NULL, bty = "b", 
-         add = FALSE, plot = TRUE)
+
+library("plot3D")
+segments3D(x0, y0, z0, x1, y1, z1 = z0)
+
+                     add = TRUE, col = "black", lwd = 2)
+
 
 
